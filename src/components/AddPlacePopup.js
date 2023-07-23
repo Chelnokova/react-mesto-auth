@@ -48,7 +48,7 @@ function AddPlacePopup({ isOpen, onClose, onAddPlace }) {
           className="popup__input popup__input_type_title"
           minLength={2}
           maxLength={40}
-          required=""
+          required
         />
         <span className="title-input-error popup__text-error" />
         <input
@@ -59,7 +59,7 @@ function AddPlacePopup({ isOpen, onClose, onAddPlace }) {
           onChange={handleChangeLink}
           placeholder="Ссылка на картинку"
           className="popup__input popup__input_type_link"
-          required=""
+          required
         />
         <span className="link-input-error popup__text-error" />
       </div>

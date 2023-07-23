@@ -27,7 +27,7 @@ function EditAvatarPopup({ isOpen, onClose, onUpdateAvatar }) {
           ref={avatarRef}
           placeholder="Ссылка на аватар"
           className="popup__input popup__input_type_link"
-          required=""
+          required
         />
         <span className="link-avatar-input-error popup__text-error" />
       </div>

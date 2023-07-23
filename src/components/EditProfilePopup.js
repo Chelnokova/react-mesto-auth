@@ -48,7 +48,7 @@ function EditProfilePopup({ isOpen, onClose, onUpdateUser }) {
           className="popup__input popup__input_type_name"
           minLength={2}
           maxLength={40}
-          required=""
+          required
         />
         <span className="name-input-error popup__text-error" />
         <input
@@ -61,7 +61,7 @@ function EditProfilePopup({ isOpen, onClose, onUpdateUser }) {
           className="popup__input popup__input_type_job"
           minLength={2}
           maxLength={200}
-          required=""
+          required
         />
         <span className="job-input-error popup__text-error" />
       </div>

@@ -35,14 +35,19 @@ function App() {
   };
 
   useEffect(() => {
-    Promise.all([api.getUserInfo(), api.getInitialCards()])
-      .then(([userData, cards]) => {
-        setCurrentUser(userData);
-        setCards(cards);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
+    if (loggedIn) {
+      Promise.all([api.getUserInfo(), api.getInitialCards()])
+        .then(([userData, cards]) => {
+          setCurrentUser(userData);
+          setCards(cards);
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    }
+  }, [loggedIn]);
+
+  useEffect(() => {
     tokenVarification();
   }, []);
 
@@ -143,24 +148,30 @@ function App() {
   }
 
   function handleLogin(password, email) {
-    auth.login(password, email).then((res) => {
-      localStorage.setItem("token", res.token);
-      setLoggedIn(true);
-      setEmail(email);
-      navigate("/", { replace: true });
-    });
+    auth
+      .login(password, email)
+      .then((res) => {
+        localStorage.setItem("token", res.token);
+        setLoggedIn(true);
+        setEmail(email);
+        navigate("/", { replace: true });
+      })
+      .catch((err) => console.log(err));
   }
 
   function tokenVarification() {
     const token = localStorage.getItem("token");
     if (token) {
-      auth.checkToken(token).then((res) => {
-        if (res) {
-          setLoggedIn(true);
-          navigate("/", { replace: true });
-          setEmail(res.data.email);
-        }
-      });
+      auth
+        .checkToken(token)
+        .then((res) => {
+          if (res) {
+            setLoggedIn(true);
+            navigate("/", { replace: true });
+            setEmail(res.data.email);
+          }
+        })
+        .catch((err) => console.log(err));
     }
   }
 
