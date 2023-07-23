@@ -34,4 +34,4 @@
 
 ## Ссылки
 
-- Ознакомиться с результатом проекта можно по [ссылке на GitHub Pages](https://chelnokova.github.io/mesto-react/)
+- Ознакомиться с результатом проекта можно по [ссылке на GitHub Pages](https://chelnokova.github.io/react-mesto-auth/)
